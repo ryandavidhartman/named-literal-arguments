@@ -3,6 +3,15 @@ package fix
 import scalafix.v1._
 import scala.meta._
 
+case class LiteralArgument(
+    position: Position,
+    parameterName: String,
+    literal: String
+) extends Diagnostic {
+  override def message: String =
+    s"Use named arguments for literals such as '$parameterName = $literal'"
+}
+
 class NamedLiteralArguments extends SemanticRule("NamedLiteralArguments") {
   override def fix(implicit doc: SemanticDocument): Patch = {
     doc.tree
@@ -17,7 +26,8 @@ class NamedLiteralArguments extends SemanticRule("NamedLiteralArguments") {
                         if method.parameterLists.nonEmpty =>
                       val parameter = method.parameterLists.head(i)
                       val parameterName = parameter.displayName
-                      Patch.addLeft(t, s"$parameterName = ")
+                      Patch.lint(
+                        LiteralArgument(t.pos, parameterName, t.syntax))
                     case _ =>
                       // Do nothing, the symbol is not a method
                       Patch.empty
