@@ -12,7 +12,7 @@ inThisBuild(
         url("https://geirsson.com")
       )
     ),
-    scalaVersion := V.scala212,
+    scalaVersion := V.scala211,
     addCompilerPlugin(scalafixSemanticdb),
     scalacOptions ++= List(
       "-Yrangepos"
