@@ -1,10 +1,16 @@
 package test
 
+import test.com.angieslist.remote.address.model.version1.SomeRequest
+
 object NamedArguments {
-  case class NamedArgumentsTest(param1: String, param2: String)
+  def complete(isSuccess: Boolean): Unit = ()
 
-  val namedArgumentsTest = NamedArgumentsTest(param1 = "param1", param2 = "param2")
+  def finish(n: Int, isError: Boolean): Unit = ()
 
+  val requestTest: SomeRequest = SomeRequest("param1", "param2")
+
+  complete(isSuccess = true)
+  complete(isSuccess = true)
+  complete(isSuccess = false)
+  finish(2, isError = true)
 }
-
-
