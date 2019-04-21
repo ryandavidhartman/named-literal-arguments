@@ -1,7 +1,11 @@
 package test
 
-import test.com.angieslist.remote.address.model.version1.SomeRequest
+import test.com.angieslist.remote.address.model.version1._
 
 object NamedArguments {
   val requestTest = SomeRequest(param1 = true, param2 = "param2")
+
+  val requestTest2 = SomeOtherRequest("happy day")
+
+  val requestTest3 = SomeFinalRequest()
 }
