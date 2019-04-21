@@ -3,7 +3,7 @@ package fix
 import scalafix.v1._
 import scala.meta._
 
-class NamedArguments extends SemanticRule("NamedArguments") {
+class CaseClassConstructorNamedArguments extends SemanticRule("CaseClassConstructorNamedArguments") {
 
   override def fix(implicit doc: SemanticDocument): Patch = {
     //println(s"Tree.syntax: " + doc.tree.syntax)

@@ -1,5 +1,5 @@
 /*
-rule = NamedArguments
+rule = CaseClassConstructorNamedArguments
 */
 package test.com.angieslist.remote.address.model.version1
 
